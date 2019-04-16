@@ -1,0 +1,13 @@
+<h1>Create a new user!</h1>
+
+<%= form_for(@user) do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %><br><br>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %><br><br>
+    <%= f.label :linkedin_url%>
+    <%= f.text_field :linkedin_url %><br><br>
+    <%= f.label :github_url %>
+    <%= f.text_field :github_url%><br><br>
+    <%= f.submit "Register"%>
+<% end %>
