@@ -1,0 +1,22 @@
+<h1>Resume Builder</h1>
+
+<%= form_for(@resume) do |f| %>
+<%= f.label "Bio: " %>
+<%= f.text_area :bio %><br><br>
+<%= f.fields_for :skills, @resume.skills.build do |skills_form| %>
+<h3>Skills</h3>
+
+<% languages = ["python", "ruby", "javascript", "react", "C#", "Rust", "Rails", "Sinatra"] %>
+
+  <% languages.each do |language| %><br>
+    <%= skills_form.label language %>
+    <%= skills_form.check_box :name, {multiple: true}, language, false%>
+  <% end %>
+  <%= f.fields_for :educations, @resume.skills.build do |educations_form| %>
+  <h3>Education</h3>
+
+<% end %>
+<% end %><br><br>
+
+<%= f.submit "Finished"%>
+<% end %>

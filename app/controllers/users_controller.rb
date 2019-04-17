@@ -3,26 +3,22 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @user = current_user.email
-  end
-
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(user_params)
-    @user.save
-    redirect_to users_path
+    # @user = current_user.email
+    @user = current_user
+    redirect_to edit_user_path(@user) if current_user.first_name == nil
   end
 
   def edit
-    @user = User.find_by(params[:email])
-
+    @user = User.find(params[:id])
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
+
   def update
-    @user = User.find_by(params[:email])
+    @user = User.find(params[:id])
     @user = User.update(user_params)
     redirect_to users_path
   end
