@@ -1,6 +1,9 @@
 class UserJobAppsController < ApplicationController
   def index
-    # @user = current_user
-    @job_apps = JobApp.all
+    @user = current_user
   end
+
+  def new 
+    @user_job_app = UserJobApp.new
+  end 
 end

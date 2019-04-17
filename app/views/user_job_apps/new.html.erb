@@ -1,1 +1,17 @@
-<h1>somethinghere</h1>
+<%= form_for(@user_job_app) do |form| %>
+    <%= form.fields_for :job_apps, @user_job_app.job_apps.build do |job_app_form| %>    
+        <%= job_app_form.label :job_title %>
+        <%= job_app_form.text_field :job_title %>
+        <br>
+        <%= job_app_form.label :position %>
+        <%= job_app_form.text_field :position %>
+        <br>
+        <%= job_app_form.label :status %>
+        <%= job_app_form.text_field :status %>
+        <br>
+        <%= job_app_form.label :activity %>
+        <%= job_app_form.date_select :activity %>
+        <br>
+    <% end %>    
+    <%= form.submit "Track Your Application" %>
+<% end %>
