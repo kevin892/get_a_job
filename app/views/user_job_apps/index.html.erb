@@ -3,3 +3,11 @@
 
 <p>Hello</p>
 <%= link_to new_user_job_app_path%>
+<%= @user_job_apps.each do |app| %>
+   <div>
+    <p>Job Title: <%= app.job_title %></p>
+    <p>Position: <%= app.position %></p>
+    <p>Status/Offer: <%= app.status %></p>
+    <p>Last Contact: <%= app.activity %></p>
+   </div> 
+<% end %>
