@@ -1,1 +1,26 @@
-<h1><%= @resume.bio %></h1>
+<h1><%= @user.full_name %></h1>
+
+<p>Email: <%= @user.email %></p>
+<p>LinkedIn: <u><%= @user.linkedin_url%></u></p>
+<p>GitHub: <u><%= @user.github_url %></u></p><br>
+<hr>
+<h3>Bio</h3>
+<div><%= @resume.bio %></div><br>
+  <h3>Skills</h3>
+<% @resume.skills.each do |skill| %>
+<div><%= skill.name %></div>
+<% end %>
+<h3>Education</h3>
+<% @resume.educations.each do |education| %>
+<div><%= education.school %></div>
+<div>Degree: <%= education.degree %></div>
+<div>Graduated: <%= education.grad_year %></div>
+<% end %>
+<br>
+<h3>Job Histroy</h3>
+<% @resume.job_histories.each do |job| %>
+<div><%= job.company %></div>
+<div>Position: <%= job.position %></div>
+<div>Started: <%= job.start_date %></div>
+<div>Finisehd: <%= job.end_date %></div>
+<% end %>

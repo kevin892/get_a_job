@@ -3,8 +3,8 @@
 <%= form_for(@resume) do |f| %>
 <%= f.label "Bio: " %>
 <%= f.text_area :bio %><br><br>
-<%= f.fields_for :skills, @resume.skills.build do |skills_form| %>
 <h3>Skills</h3>
+<%= f.fields_for :skills, @resume.skills.build do |skills_form| %>
 
 <% languages = ["python", "ruby", "javascript", "react", "C#", "Rust", "Rails", "Sinatra"] %>
 
@@ -12,9 +12,28 @@
     <%= skills_form.label language %>
     <%= skills_form.check_box :name, {multiple: true}, language, false%>
   <% end %>
-  <%= f.fields_for :educations, @resume.skills.build do |educations_form| %>
-  <h3>Education</h3>
 
+  <h3>Education</h3>
+  <%= f.fields_for :educations, @resume.educations.build do |education_form| %>
+  <%= education_form.label "School: " %>
+  <%= education_form.text_field :school %>
+  <%= education_form.label "Degree: "%>
+  <%= education_form.text_field :degree %>
+  <%= education_form.label "Grad Year: " %>
+  <%= education_form.number_field :grad_year %>
+<% end %>
+
+<h3>Job History</h3>
+<%= f.fields_for :job_histories, @resume.job_histories.build do |job_history_form| %>
+<%= job_history_form.label "Company: " %>
+<%= job_history_form.text_field :company %>
+<%= job_history_form.label "Position: " %>
+<%= job_history_form.text_field :position %>
+<br>
+<%= job_history_form.label "Start Date: " %>
+<%= job_history_form.date_select :start_date %>
+<%= job_history_form.label "End Date: " %>
+<%= job_history_form.date_select :end_date %>
 <% end %>
 <% end %><br><br>
 

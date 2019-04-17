@@ -41,7 +41,9 @@ class ResumesController < ApplicationController
 
   def resume_params
     params.require(:resume).permit(:bio,
-      :skills_attributes => [name: []]
+      :skills_attributes => [:name],
+      :educations_attributes => [:school, :degree, :grad_year],
+      :job_histories_attributes => [:company, :position, :start_date, :end_date]
   )
   end
 end
